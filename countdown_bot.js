@@ -112,6 +112,14 @@ function getLaborDay(year) {
 function getBurnDay(year) {
 	var burnDay = getLaborDay(year);
 	burnDay.setDate(burnDay.getDate() - 2);
+	if (typeof year === 'undefined') {
+		// We want the next burn day, so make sure that the current choice is
+		// on or after today
+		var today = new Date();
+		if (today > burnDay) {
+			return getBurnDay(today.getYear() + 1);
+		}
+	}
 	return burnDay;
 }
 
