@@ -48,7 +48,7 @@ controller.hears(['paul', 'addis', '2007'], 'ambient,direct_mention,direct_messa
 	bot.reply(message, ':burn: Did you know? In 2007 the man burned twice. At 3AM on ' + DateFormat(burnDays[0], 'dddd, mmmm dS') + ' Paul David Addis lit the man prematurely during a lunar eclipse. Paul did this in the name of preserving the ethos of Burning Man, which he perceived to be fading at that time. Doc, at his first burn, was doing shots off of a ski with Mojito Molly and James on the Esplanade while this scene unfolded behind them. The man was rebuilt and burned as planned on ' + DateFormat(burnDays[1], 'dddd, mmmm dS') + '. :burn:');
 });
 
-controller.hears(['\\b\(\\d+\)\\b'], 'ambient,direct_mention,direct_message,mention', function(bot, message) {
+controller.hears(['\\b\(\\d\{4,\}\)\\b'], 'ambient,direct_mention,direct_message,mention', function(bot, message) {
 	var year = parseInt(message.match[1]);
 	if (year > EndOfDays) {
 		bot.reply(message, ':burn: Did you know? Javascript doesn\'t support dates more than 8,640,000,000,000,000 milliseconds after January 1st, 1970 UTC. :burn:');
