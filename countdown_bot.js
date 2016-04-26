@@ -1,19 +1,13 @@
 var Botkit = require('botkit');
 var DateFormat = require('dateformat');
 var EndOfDays = 273860;
-var FirstBurns = {
-	'2007': ['@doc'],
-	'2008': ['@magneato'],
-	'2010': ['@curiosity.responsible'],
-	'2011': ['@guaqueta', '@presley']
-};
 
 var controller = Botkit.slackbot({
 	json_file_store: 'countdown_bot_store.js'
 });
 var bot = controller.spawn({
-	token: '***REMOVED***'
-})
+	token: process.env.SLACKBOT_TOKEN
+});
 bot.startRTM(function(err,bot,payload) {
   if (err) {
     throw new Error('Could not connect to Slack');
