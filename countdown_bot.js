@@ -59,7 +59,7 @@ controller.hears(['\\b\(\\d\{4,\}\)\\b'], 'ambient,direct_mention,direct_message
 	else {
 		var burnDay = getBurnDay(year);
 		if (year === 1986) {
-			bot.reply(message, ':burn: The very first man burned on ' + DateFormat(burnDay, 'dddd, mmmm dS') + '. :burn:');
+			bot.reply(message, ':burn: The very first man burned in 1986 on ' + DateFormat(burnDay, 'dddd, mmmm dS') + '. :burn:');
 		}
 		else {
 			var future = burnDay > new Date();
