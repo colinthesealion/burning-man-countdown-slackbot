@@ -14,6 +14,13 @@ bot.startRTM(function(err,bot,payload) {
   }
 });
 
+controller.hears(['help'], 'direct_mention,direct_message,mention', function(bot, message) {
+	bot.reply(message, ':burn: No. :burn:');
+	setTimeout(function() {
+		bot.reply(message, ':burn: Haha, just kidding. Try @countdown_bot: my first burn was 4_DIGIT_YEAR_OF_YOUR_FIRST_BURN. :burn:');
+	}, 5000);
+});
+
 controller.hears(['my first burn was \(\\d+\)'], 'direct_mention,direct_message', function(bot, message) {
 	controller.storage.users.save({ id: message.user, firstBurn: message.match[1] }, function(err) { if (err) { console.log('An error was encountered saving first burn year: ' + err); } });
 	bot.reply(message, ':burn: Cool, I\'ll remember that. :burn:');
